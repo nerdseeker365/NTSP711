@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+   <!-- TxMgmr Cfg -->
+   <bean id="dsTxMgmr"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+       <constructor-arg  ref="hkDS"/>
+   </bean>
+   <!-- Pointcut for applying TxService on methods -->
+   <!-- <bean id="nmtas"   class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource">
+        <property name="properties">
+            <props>
+               <prop key="transferMoney">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+   </bean>
+ -->   
+   <!-- cfg TransactionProxyFactoryBean -->
+   <bean id="tpfb"  class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+          <property name="transactionManager"  ref="dsTxMgmr"/>
+          <property name="target" ref="bankService"/>
+          <!-- <property name="transactionAttributeSource"  ref="nmtas"/> -->
+          <property name="transactionAttributes">
+              <props>
+                 <prop key="transferMoney">PROPAGATION_MANDATORY</prop>
+              <!--    <prop key="transferMoney">-java.lang.IllegalAccessException</prop>
+                 <prop key="transferMoney">timeout_0010</prop> -->
+              </props>
+          
+          </property> 
+   </bean>
+   
+
+</beans>

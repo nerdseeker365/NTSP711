@@ -1,0 +1,9 @@
+SQL> select  * from InsurancePolicy;
+
+  POLICYID POLICYNAME               TENURE COMPANY    INITIALAMOUNT
+---------- -------------------- ---------- ---------- -------------
+      1001 JA                          240 LIC                12000
+      1002 JS                          300 LIC                15000
+      1003 JSK                         150 LIC                 2000
+      1004 JS++                        400 LIC                12000
+        41 JA                           90 LIC               100000

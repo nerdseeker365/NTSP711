@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+   <!-- Dependent Bean class cfg -->
+   <!-- <bean id="iad" class="com.nt.beans.IntrAmtDetails">
+      <property name="pamt" value="100000"/>
+      <property name="rate"  value="2"/>
+      <property name="time" value="12"/>
+   </bean> -->
+<!-- Target Bean class cfg -->
+  <bean id="loanDept"   class="com.nt.beans.BankLoanDept">
+      <!-- <constructor-arg  ref="iad"/> -->
+      <constructor-arg  value="100000,12,2"/>
+  </bean>   
+  
+  <!-- for Custom PE registration -->
+   <bean id="cec" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+      <property name="customEditors">
+        <map>
+            <entry  key="com.nt.beans.IntrAmtDetails"  value="com.nt.editors.IntrAmtDetailsEditor"/>
+        </map>
+      </property>
+   </bean>
+ 
+</beans>

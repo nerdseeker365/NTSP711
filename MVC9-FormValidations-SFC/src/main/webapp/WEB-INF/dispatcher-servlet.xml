@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+ 
+   <!-- Handler Mapping -->
+   <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+             <props>
+                 <prop key="customer.htm">cic</prop>
+             </props>
+        </property>
+   </bean>
+   
+   
+   
+   <!-- Controller  -->
+   <bean id="cic"  class="com.nt.controller.CustomerInsertController">
+        <constructor-arg  ref="custService"/>
+        <property name="commandName"  value="custCmd"/>
+        <property name="commandClass"  value="com.nt.command.CustomerCommand"/>
+        <property name="formView"  value="customer_form"/>
+        <property name="successView"  value="result"/>
+        <property name="sessionForm"  value="true"/>
+        <property name="validator"   ref="custValidator"/>
+   </bean>
+   
+   <!-- Properties file cfg -->
+   <bean id="messageSource"  class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename"  value="com/nt/commons/Validator"/>
+   </bean>
+   
+   <!-- Validator cfg -->
+   <bean id="custValidator"  class="com.nt.validator.CustomerCommandValiator"/>
+           
+   
+   <!-- ViewResolver -->
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix"  value="/WEB-INF/pages/"/>
+        <property name="suffix"  value=".jsp"/>
+   </bean>
+   
+   
+
+</beans>

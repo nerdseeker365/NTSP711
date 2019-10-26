@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	<bean id="dobDt"  class="java.util.Date">
+	     <property name="year"  value="90"/>
+	     <property name="month"  value="10"/>
+	     <property name="date"  value="19"/>
+	</bean>
+	<bean id="dojDt"  class="java.util.Date">
+	     <property name="year"  value="114"/>
+	     <property name="month"  value="11"/>
+	     <property name="date"  value="1"/>
+	</bean>
+	<bean id="sysDt"  class="java.util.Date"/>
+	
+   <!-- Spring bean cfg -->
+   <bean id="sFactory"  class="com.nt.beans.ShoeFactory">
+       <property name="sizes">
+         <list>
+             <value>11</value>
+             <value>10.5</value>
+             <value>10</value>
+             <value>9.5</value>
+          </list>
+       </property>
+       <property name="dates">
+            <list>
+                <ref  bean="dobDt"/>
+                <ref bean="dojDt"/>
+                <ref bean="sysDt"/>
+            </list>
+       </property>
+   </bean>
+   <bean id="clg"  class="com.nt.beans.College">
+      <property name="studNames">
+          <list>
+             <value>raja</value>
+             <value>rani</value>
+             <value>raja</value>
+          </list>
+      </property>
+      <property name="listDates">
+          <list >
+               <ref bean="sysDt"/>
+               <ref bean="dobDt"/>
+               <ref bean="dojDt"/>
+               <ref bean="sysDt"/>
+          </list>
+      
+      </property>
+   </bean>
+   
+   <bean id="airtel"  class="com.nt.beans.AirtelService">
+       <property name="availableNumbers">
+          <set>
+             <value>9876777668</value>
+             <value>9876722668</value>
+             <value>9876777668</value>
+             <value>1111111111</value>
+          </set>
+       </property>
+       <property name="setDates">
+           <set>
+              <ref bean="sysDt"/>
+              <ref bean="dobDt"/>
+              <ref bean="dojDt"/>
+              <ref bean="dojDt"/>
+           </set>
+       </property>
+   </bean>
+   
+   <bean id="fi"  class="com.nt.beans.FacultyInfo">
+       <constructor-arg>
+          <map >
+             <entry>
+                <key><value>hk</value></key>
+                <value>CoreJava</value>
+             </entry> 
+             <entry key="murali"  value="oracle" />
+             <entry  key="vijay"  value="oracle"/>
+          </map>
+       </constructor-arg>
+       <constructor-arg>
+           <map>
+              <entry>
+                 <key><value>doj</value></key>
+                 <ref bean="dojDt"/>
+              </entry>
+              <entry  key="dob" value-ref="dobDt"/>
+              <entry key="sysDt"  value-ref="sysDt"/>
+           </map>
+       </constructor-arg>
+       <constructor-arg>
+           <map>
+               <entry>
+                    <key><value>raja</value></key>
+                    <value>student</value>
+               </entry>
+               <entry>
+                  <key><value>dob</value></key>
+                  <ref bean="dobDt"/>
+               </entry>
+               <entry>
+                  <key><ref bean="sysDt"/> </key>
+                  <value>Date of Birth</value>
+               </entry>
+               <entry>
+                  <key><ref bean="dobDt"/> </key>
+                  <ref  bean="dojDt"/>
+               </entry>
+               <entry key="ravi"  value="employee"/>
+               <entry key="sysDate" value-ref="sysDt"/>
+               <entry key-ref="sysDt"  value="today"/>
+           </map>
+       
+       </constructor-arg>
+   
+   </bean>
+   
+   <bean id="fstore"  class="com.nt.beans.FruitStore">
+      <property name="fruitInfo">
+          <props>
+              <prop key="banana" >yellow</prop>
+              <prop key="apple">red</prop>
+              <prop key="grapes">black</prop>
+              <prop key="mango">yellow</prop>
+          </props>
+      </property>
+   
+   </bean>
+
+</beans>

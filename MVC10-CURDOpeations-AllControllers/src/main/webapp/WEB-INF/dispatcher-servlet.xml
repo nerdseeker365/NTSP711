@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd">
+    <!-- Handler Mapping -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+             <props>
+                 <prop key="home.htm">pvc</prop>
+                 <prop key="report.htm">srgc</prop>
+                 <prop key="edit.htm">esc</prop>
+                 <prop key="delete.htm">dsc</prop>
+             </props>
+        </property>
+    </bean>
+    
+    <!-- Controller -->
+    <bean id="pvc"   class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+          <property name="viewName"  value="welcome"/>
+    </bean>
+    <bean id="srgc"  class="com.nt.controller.ScientistReportGenerationController">
+           <constructor-arg ref="scService"/>
+    </bean>
+    <bean id="esc"  class="com.nt.controller.EditScientistController">
+         <constructor-arg  ref="scService"/>
+         <property name="formView" value="edit_scientist"/>
+         <property name="successView" value="report"/>
+         <property name="sessionForm"  value="true"/> 
+         <property name="commandName" value="scCmd"/>
+         <property name="commandClass"  value="com.nt.command.ScientistCommand"/>
+    </bean>
+    
+    <bean id="dsc"  class="com.nt.controller.DeleteScientistController">
+        <constructor-arg  ref="scService"/>
+    </bean>
+    
+    
+    <!-- View Resolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="prefix"  value="/WEB-INF/pages/"/>
+            <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+  <!-- DataSource cfg -->
+  <bean id="drds"  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+       <property name="driverClassName"  value="${jdbc.driver}"/>
+       <property name="url" value="${jdbc.url}"/>
+       <property name="username" value="${jdbc.user}"/>
+       <property name="password"  value="${jdbc.pwd}"/>
+  </bean>	
+  <!-- DAO  cfg -->
+  <bean id="stDAO"   class="com.nt.dao.StudentDAOImpl">
+     <constructor-arg  ref="drds"/>
+  </bean>
+  <!-- Service cfg -->
+  <bean id="stService"  class="com.nt.service.StudentServiceImpl">
+       <constructor-arg  ref="stDAO"/>
+       <property name="osname"  value="${os.name}"/>
+       <property name="java_home" value="${JAVA_HOME}"/>
+  </bean>
+  <!-- Controller cfg -->
+  <bean id="controller"   class="com.nt.controller.MainController">
+      <constructor-arg  ref="stService"/>
+  </bean>
+  
+  <!-- Cfg PropertyPlaceHolderConfigurer  (For single properties file)-->
+  <!-- <bean id="pphc"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+      <property name="location" value="com/nt/commons/jdbc.properties"/>
+  </bean> -->
+   <bean id="pphc"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+      <property name="locations">
+       <array>
+           <value>com/nt/commons/jdbc2.properties</value>
+           <value>com/nt/commons/jdbc1.properties</value>
+       </array>
+      </property>
+  </bean> 
+  <!--  <context:property-placeholder  location="classpath:com/nt/commons/jdbc1.properties,classpath:com/nt/commons/jdbc2.properties"/> -->
+</beans>

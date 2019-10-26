@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	
+	<bean id="sysDt"  class="java.util.Date"/>
+	<bean id="dobDt"  class="java.util.Date"   p:year="94"  p:month="11"  p:date="18"/>
+	<util:list id="list1"  list-class="java.util.ArrayList" value-type="java.lang.String">
+	   <value>raja</value>
+	   <value>raja</value>
+	    <value>rani</value>
+	   <value>jani</value>
+	</util:list>
+	
+	<util:list id="list2"  list-class="java.util.LinkedList"  value-type="java.util.Date">
+	     <ref  bean="sysDt"/>
+	     <ref  bean="dobDt"/>
+	</util:list>
+	
+	<util:set id="set1"  set-class="java.util.HashSet" value-type="java.lang.Long">
+	         <value>99999999999</value>
+	         <value>88888888888</value>
+	         <value>88888888888</value>
+	</util:set>
+	
+	<util:set id="set2"  set-class="java.util.LinkedHashSet" value-type="java.util.Date">
+	  <ref bean="sysDt"/>
+	  <ref bean="dobDt"/>
+	</util:set>
+	
+	<util:map  id="map1"   map-class="java.util.LinkedHashMap" key-type="java.lang.String" value-type="java.util.Date">
+	    <entry>
+	      <key><value>today</value></key>
+	      <ref bean="sysDt"/>
+	    </entry>
+	    <entry key="dob"  value-ref="dobDt" />	
+	</util:map>
+	
+	<util:properties id="props1" value-type="java.lang.String">
+	      <prop key="apple">red</prop>
+	      <prop key="banana">yellow</prop>
+	      <prop key="mango">yellow</prop>
+	</util:properties>
+
+    <util:properties  id="props2"  location="classpath:com/nt/commons/info.properties"   ignore-resource-not-found="true"/>
+    <util:constant id="mPI" static-field="java.lang.Math.PI" />
+
+</beans>

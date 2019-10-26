@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd">
+  
+  <!-- Working  Server Manager JDBC con pool -->
+   <jee:jndi-lookup id="ds" jndi-name="java:/comp/env/DsJndi"/>
+   
+  <!-- Cfg JdbcTemplate -->
+  <bean id="jt"  class="org.springframework.jdbc.core.JdbcTemplate">
+     <constructor-arg  ref="ds"/>
+  </bean>
+  
+  <!-- Cfg DAO-->
+  <bean id="scDAO"  class="com.nt.dao.ScientistDAOImpl">
+        <constructor-arg  ref="jt"/>
+  </bean> 		
+		
+
+
+</beans>

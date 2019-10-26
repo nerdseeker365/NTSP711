@@ -1,0 +1,22 @@
+SQL> select * from india_scientists;
+
+        ID NAME            DOMAIN          EXPERIENCE PATENTSCOUNT
+---------- --------------- --------------- ---------- ------------
+      9001 AbdulKalam      Space                   50           10
+      9021 sarabhai        Space                   50           10
+      8021 bhatker         IT                      10           10
+      8041 arvind          MB                      30           10
+      8043 swamy           argriculture            30           10
+       445 statish         Space                   40           10
+       435 cvraman         physics                 40           10
+
+7 rows selected.
+
+SQL> desc  india_scientists;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(15)
+ DOMAIN                                             VARCHAR2(15)
+ EXPERIENCE                                         NUMBER(3)
+ PATENTSCOUNT                                       NUMBER(3)

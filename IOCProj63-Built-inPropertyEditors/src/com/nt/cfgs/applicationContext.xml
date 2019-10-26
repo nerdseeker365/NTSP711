@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	 <!-- bean class cfg -->
+	 <bean id="aCard"  class="com.nt.beans.AadharCard">
+	         <property name="aadharNo"  value="43434343434343"/>
+	         <property name="age"  value="30.11f"/>
+	         <property name="name" value="raja"/>
+	         <property name="dob" value="10/29/2010"/>
+	         <property name="moles" value="mole on hand,mole on fore head"/>
+	         <property name="favoriteLetter"  value="S"/>
+	         <property name="favoriteLetters"  value="SKAB"/>
+	         <property name="locale" value="hi_IN"/>
+	         <property name="handicapted" value="false"/>
+	         <property name="phones" value="9999999999,8888888888"/>
+	         <property name="photoPath"  value="c:/photos/dhoni.png"/>
+	         <property name="linkedInURL"  value="https://linkedIn.com/profile/uid=2345"/>
+	         <property name="linkedInURI"  value="linkedIn.com/profile/uid=345"/>
+	         <property name="curClazz"  value="com.nt.beans.AadharCard"/>
+	         <property name="fileReader" value="classpath:com/nt/cfgs/applicationContext.xml"></property>
+	         <property name="pattern"  value=".s"/>
+	 </bean>
+
+
+</beans>

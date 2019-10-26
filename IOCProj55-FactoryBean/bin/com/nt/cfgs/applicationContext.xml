@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+     <!-- Cfg Dependent bean -->
+     <bean id="cfb"  class="com.nt.beans.CalendarFactoryBean">
+         <constructor-arg  value="1988" />
+         <constructor-arg  value="2" />
+         <constructor-arg  value="29" />
+     </bean>
+     <!-- Target Bean cfg -->
+     <bean id="remainder"  class="com.nt.beans.ScheduleRemainder">
+              <constructor-arg  ref="cfb"/>
+     </bean>
+
+</beans>

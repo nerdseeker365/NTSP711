@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean id="dStore"  class="com.nt.beans.DecthlonStrore">
+        <constructor-arg >
+               <bean   class="com.nt.beans.KalanjeeShoe">
+                    <property name="shoeType"  value="Sports"/>
+                    <property name="priceRange" value="2000-5000"/>
+               </bean>
+        </constructor-arg>
+    </bean>
+</beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+    <bean id="baseBike"  class="com.nt.beans.Bike"  abstract="true">
+           <property name="model" value="pulsor"/>
+           <property name="vendor" value="bajaj"/>
+           <property name="idleSpeed" value="200KMPH"/>
+           <property name="idleMilege" value="35KMPL"/>
+           <property name="fuelTankCapcity" value="20Ltrs"/>
+    </bean>
+    <bean id="rajaBike"   class="com.nt.beans.Bike"   parent="baseBike">
+          <property name="regNo" value="TS07EN4797"/>
+          <property name="ownerName" value="raja"/>
+          <property name="engineNo"  value="4343434"/>
+          <property name="colour" value="red"/>
+          <property name="engineCC" value="150CC"/>
+    </bean>
+     <bean id="rameshBike"   class="com.nt.beans.Bike"   parent="baseBike">
+          <property name="regNo" value="TS07EN4497"/>
+          <property name="ownerName" value="ramesh"/>
+          <property name="engineNo"  value="4543434"/>
+          <property name="colour" value="black"/>
+          <property name="engineCC" value="220CC"/>
+    </bean>
+
+</beans>

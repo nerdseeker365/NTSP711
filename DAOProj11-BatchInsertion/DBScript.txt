@@ -1,0 +1,8 @@
+SQL> desc railway_ticket;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ TKTID                                     NOT NULL NUMBER(5)
+ PSNGRNAME                                          VARCHAR2(10)
+ SOURCE                                             VARCHAR2(10)
+ DEST                                               VARCHAR2(10)
+ PRICE                                              NUMBER(10,2)

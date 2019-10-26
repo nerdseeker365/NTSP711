@@ -1,0 +1,10 @@
+create or replace function  fx_GET_EMPS_BY_DESG(desg  in varchar2) return
+sys_refcursor
+as
+  details sys_refcursor;
+begin
+    open details for
+          select empno,ename,job,sal from emp where job=desg;
+return details;
+end;
+/

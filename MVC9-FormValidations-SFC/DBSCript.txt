@@ -1,0 +1,10 @@
+SQL> desc  MVC_CUSTOMER;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(15)
+ CADDRS                                             VARCHAR2(15)
+ MOBILENO                                           NUMBER(10)
+ BILLAMT                                            FLOAT(126)
+ 
+ SQL> create sequence   cno_seq start with 1 increment by 1;

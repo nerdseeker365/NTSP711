@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+    <bean id="baseBike"  class="com.nt.beans.Bike"  abstract="true">
+           <constructor-arg name="model" value="pulsor"/>
+           <constructor-arg name="vendor" value="bajaj"/>
+           <constructor-arg name="idleSpeed" value="200KMPH"/>
+           <constructor-arg name="idleMilege" value="35KMPL"/>
+           <constructor-arg name="fuelTankCapcity" value="20Ltrs"/>
+    </bean>
+    <bean id="rajaBike"   class="com.nt.beans.Bike"   parent="baseBike">
+          <constructor-arg name="regNo" value="TS07EN4797"/>
+          <constructor-arg name="ownerName" value="raja"/>
+          <constructor-arg name="engineNo"  value="4343434"/>
+          <constructor-arg name="colour" value="red"/>
+          <constructor-arg name="engineCC" value="150CC"/>
+    </bean>
+     <bean id="rameshBike"   class="com.nt.beans.Bike"   parent="baseBike">
+          <constructor-arg name="regNo" value="TS07EN4497"/>
+          <constructor-arg name="ownerName" value="ramesh"/>
+          <constructor-arg name="engineNo"  value="4543434"/>
+          <constructor-arg name="colour" value="black"/>
+          <constructor-arg name="engineCC" value="220CC"/>
+    </bean>
+
+</beans>
